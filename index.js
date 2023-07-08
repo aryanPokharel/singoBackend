@@ -23,3 +23,5 @@ const server = app.listen(0, () => {
   const port = server.address().port;
   console.log(`The Server is running on port ${port}`);
 });
+// const port = 5432;
+// app.listen(port)
