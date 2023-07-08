@@ -118,4 +118,8 @@ router.route("/edit").put(async (req, res) => {
   }
 });
 
+router.route("/test").get((req,res) => {
+  res.send("Test has been successful!")
+})
+
 module.exports = router;
