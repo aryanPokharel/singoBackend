@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 const userRouter = require('./routers/userRouter');
 const performanceRouter = require('./routers/performaceRouter');
 
-// Use the routers
 app.use('/users', userRouter);
 app.use('/performances', performanceRouter);
 
