@@ -21,5 +21,5 @@ app.use(express.json());
 // Find an available port
 const server = app.listen(0, () => {
   const port = server.address().port;
-  console.log(`Server is running on port ${port}`);
+  console.log(`The Server is running on port ${port}`);
 });
