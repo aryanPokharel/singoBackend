@@ -74,31 +74,30 @@ router
     }
   });
 
-  router
+router
   .route("/getUser")
 
   .post(async (req, res) => {
     try {
       const userId = req.body.userId;
 
-      const Users = await User.find();
-      var response = "Not found";
+      const user = await User.findById(userId);
 
-      for (var i = 0; i < Users.length; i++) {
-        if (Users[i]._id === userId) {
-          response = {
-            id: Users[i]._id,
-            fullName: Users[i].fullName,
-            email: Users[i].email,
-            password: Users[i].password,
-            phone: Users[i].phone,
-            dob: Users[i].dob,
-            photo: Users[i].photo,
-          };
-          break;
-        }
+      if (user) {
+        // construct the response
+        const response = {
+          id: user._id,
+          fullName: user.fullName,
+          email: user.email,
+          password: user.password,
+          phone: user.phone,
+          dob: user.dob,
+          photo: user.photo,
+        };
+        res.send(response);
+      } else {
+        res.send("Not found");
       }
-      res.send(response);
     } catch {
       res.send("-1");
     }
