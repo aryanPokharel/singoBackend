@@ -44,7 +44,8 @@ router.route("/").get(async (req, res) => {
 
     var response = [];
     for (var i = 0; i < Performances.length; i++) {
-      if (Performances[i].performed == false) {
+      // if (Performances[i].performed == false) {
+        if (Performances[i]) {
         response.push(Performances[i]);
       } else {
         console.log("true");
@@ -55,6 +56,7 @@ router.route("/").get(async (req, res) => {
     res.send("-1");
   }
 });
+
 router.route("/getById").post(async (req, res) => {
   try {
     const performanceId = req.body.requestId;
