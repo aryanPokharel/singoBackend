@@ -73,5 +73,35 @@ router
       res.send("-1");
     }
   });
-  
+
+  router
+  .route("/getUser")
+
+  .post(async (req, res) => {
+    try {
+      const userId = req.body.userId;
+
+      const Users = await User.find();
+      var response = "Not found";
+
+      for (var i = 0; i < Users.length; i++) {
+        if (Users[i]._id === userId) {
+          response = {
+            id: Users[i]._id,
+            fullName: Users[i].fullName,
+            email: Users[i].email,
+            password: Users[i].password,
+            phone: Users[i].phone,
+            dob: Users[i].dob,
+            photo: Users[i].photo,
+          };
+          break;
+        }
+      }
+      res.send(response);
+    } catch {
+      res.send("-1");
+    }
+  });
+
 module.exports = router;
