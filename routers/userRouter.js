@@ -102,5 +102,33 @@ router
       res.send("-1");
     }
   });
+router
+  .route("/getProfile")
+
+  .post(async (req, res) => {
+    try {
+      const userId = req.body.userId;
+
+      const user = await User.findById(userId);
+
+      if (user) {
+        // construct the response
+        const response = {
+          id: user._id,
+          fullName: user.fullName,
+          email: user.email,
+
+          phone: user.phone,
+          dob: user.dob,
+          photo: user.photo,
+        };
+        res.send(response);
+      } else {
+        res.send("Not found");
+      }
+    } catch {
+      res.send("-1");
+    }
+  });
 
 module.exports = router;
